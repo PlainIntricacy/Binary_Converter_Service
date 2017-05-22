@@ -21,37 +21,13 @@ namespace BinaryConverterService
         //Receives an integer as input, and returns its binary equivalent as a string.
         public string DecimalToBinary(int input)
         {
-            string outputString = "";
-            while (input >= 1)
-            {
-                outputString += (input % 2);
-                input /= 2;
-            }
-            return reverseString(outputString);
+            return Convert.ToString(input, 2);
         }
         [WebMethod]
         //Receives a binary string as input, and returns its integer equivalent.
         public int BinaryToDecimal(string input)
         {
-            string revInput = reverseString(input);
-            int output=0;
-            for(int i=0; i<revInput.Length; i++)
-            {
-                if (revInput[i] == '1')
-                {
-                    output += (int)Math.Pow(2, i);
-                }
-            }
-            return output;
-        }
-        public string reverseString(string input)
-        {
-            char[] output = new char[input.Length];
-            for (int i = input.Length - 1; i >= 0; i--)
-            {
-                output[input.Length - 1 - i] = input[i];
-            }
-            return new string(output);
+            return Convert.ToInt32(input, 2);
         }
     }
 }
